@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import ujson
 import requests
 import pandas as pd
