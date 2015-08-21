@@ -21,6 +21,13 @@ var stockForm = React.createClass({displayName: "stockForm",
             cache: false,
             success: function(data) {
 
+                $("#correlation").html(data.correlation);
+                $("#covariance").html(data.covariance);
+                $("#chartName").html(stockX.toUpperCase());
+                $("#chartName2").html(stockY.toUpperCase());
+                $("#correlationGraph svg").empty();
+                $("#chart").empty();
+                $("#chart2").empty();
 
                 nv.addGraph(function() {
                     var chart = nv.models.scatterChart()
@@ -72,13 +79,7 @@ var stockForm = React.createClass({displayName: "stockForm",
                     });
                 });
                 
-
-
-                $("#correlation").html(data.correlation);
-                $("#covariance").html(data.covariance);
-                $("#chartName").html(stockX.toUpperCase());
                 var parseDate = d3.time.format("%Y-%m-%d").parse;
-                $("#chart").empty();
                 d3.csv("/getCSV", function(err, data)  {
                     data.forEach(function(d, i)  {
                         d.date = new Date(parseDate(d.date).getTime());
@@ -92,8 +93,6 @@ var stockForm = React.createClass({displayName: "stockForm",
                     React.render(React.createElement(CandleStickChartWithMACDIndicator, {data: data.reverse()}), document.getElementById("chart"));
                 });
 
-                $("#chartName2").html(stockY.toUpperCase());
-                $("#chart2").empty();
                 d3.csv("/getCSV2", function(err, data)  {
                     data.forEach(function(d, i)  {
                         d.date = new Date(parseDate(d.date).getTime());

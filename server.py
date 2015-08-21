@@ -27,9 +27,7 @@ def make_csv(firstURL, secondURL):
     ycol['ychange'] = (ycol['Close']/ycol['Open']-1)*100
     correlation =  xcol['xchange'].corr(ycol['ychange'])
     covariance =  xcol['xchange'].cov(ycol['ychange'])
-    z = pd.concat([xcol['date'], xcol['xchange'], ycol['ychange']], axis=1)
-    z.to_csv('fetched_data/data.csv', index=False)
-    z.plot(kind='scatter', x='xchange', y='ychange').get_figure().savefig('static/scatterplot')
+    pd.concat([xcol['date'], xcol['xchange'], ycol['ychange']], axis=1).to_csv('fetched_data/data.csv', index=False)
     return jsonify(correlation=correlation, covariance=covariance), 200
 
 @app.route('/', methods=['GET', 'POST'])
