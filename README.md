@@ -22,6 +22,6 @@ From the base folder, run:
 
     ~/cod $ python server.py
 From your favorite browser, goto [localhost:5000](http://localhost:5000/). 
-
+![Diagram](https://github.com/ccheung1221/cod/blob/master/example/example1.png)
 ## To Do
 - Autocomplete aid to find stock ticker symbols 
