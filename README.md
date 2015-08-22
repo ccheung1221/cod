@@ -17,6 +17,11 @@ We use pip to install our python requirements for our backend. If you do not alr
     $ cd cod
     $ pip install -r requirements.txt # sudo if it does not work
 
+###Linux
+If pandas is not installing through pip, try:
+
+    $ sudo apt-get install python-pandas
+
 ## Unleash the Correlations
 From the base folder, run:
 
